@@ -10,7 +10,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositorie
 
 RUN apk update && \
     apk upgrade && \
-    apk --update --no-cache add xvfb x11vnc xfce4 xfce4-terminal paper-icon-theme arc-theme chromium python bash sudo htop procps curl openssh x2goserver git openjdk8 libressl x11vnc vim firefox midori xterm
+    apk --update --no-cache add xvfb x11vnc xfce4 xfce4-terminal paper-icon-theme arc-theme chromium python3 bash sudo htop procps curl openssh x2goserver git openjdk8 libressl x11vnc vim firefox midori xterm
 
 RUN mkdir -p /usr/share/wallpapers \
   && curl http://getwallpapers.com/wallpaper/full/d/5/0/62105.jpg -o /usr/share/wallpapers/android-5-0-lollipop-material-5355.jpg \
@@ -53,9 +53,9 @@ RUN sudo bash -c 'echo "X11Forwarding yes" >> /etc/ssh/sshd_config' && \
     
 WORKDIR $HOME
 
-RUN set -xe && \
-    mkdir $HOME/idea  && \
-    wget -qO- https://download.jetbrains.com/idea/ideaIU-2018.1.5.tar.gz | tar zx --strip 1 -C $HOME/idea
+#RUN set -xe && \
+#    mkdir $HOME/idea  && \
+#    wget -qO- https://download.jetbrains.com/idea/ideaIU-2018.1.5.tar.gz | tar zx --strip 1 -C $HOME/idea
 
 EXPOSE $VNC_PORT $NOVNC_PORT $SSH_PORT
 
